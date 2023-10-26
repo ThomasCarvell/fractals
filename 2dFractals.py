@@ -2,6 +2,7 @@ from OpenGL.GL import *
 import pygame
 import numpy as np
 import ctypes
+import os
 
 class program():
 
@@ -137,12 +138,13 @@ class screenspace():
 class app():
 
     FPS = 60
-    WIDTH = 1920
-    HEIGHT = 1200
+    WIDTH = 2560
+    HEIGHT = 1440
 
     def __init__(self):
         pygame.init()
-        self.root = pygame.display.set_mode((self.WIDTH,self.HEIGHT), pygame.DOUBLEBUF | pygame.OPENGL | pygame.FULLSCREEN, vsync=1)
+        os.environ['SDL_VIDEO_CENTERED'] = '1'
+        self.root = pygame.display.set_mode((self.WIDTH,self.HEIGHT), pygame.DOUBLEBUF | pygame.OPENGL | pygame.NOFRAME, vsync=1)
         self.clock = pygame.time.Clock()
 
     def run(self):
